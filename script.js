@@ -23,7 +23,7 @@ function loadStage() {
    var city_name = inputEl.val();
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     console.log(weatherURL);
@@ -161,7 +161,7 @@ $('#Austin').on('click',()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -191,7 +191,7 @@ $('#Chicago').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -208,7 +208,7 @@ $('#New').on('click', ()=>{
     var city_name = 'new york';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -221,7 +221,7 @@ $('#New').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -238,7 +238,7 @@ $('#Orlando').on('click', ()=>{
     var city_name = 'Orlando';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -251,7 +251,7 @@ $('#Orlando').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -268,7 +268,7 @@ $('#San').on('click', ()=>{
     var city_name = 'san francisco';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -281,7 +281,7 @@ $('#San').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -311,7 +311,7 @@ $('#Seatle').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -328,7 +328,7 @@ $('#Denver').on('click', ()=>{
     var city_name = 'Denver';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -341,7 +341,7 @@ $('#Denver').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
@@ -371,7 +371,7 @@ $('#Atlanta').on('click', ()=>{
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetch and updating the icon
             fetch(iconurl)
             .then(data => {
