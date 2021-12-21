@@ -35,7 +35,7 @@ function loadStage() {
             latitude = data.coord.lat;
             //convert weather icon into URL string
             var iconCode=data.weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
              
             //fetch and updating the icon
             fetch(iconurl)
@@ -83,7 +83,7 @@ function getCurrentWeather(){
         for (var i =0; i<5;i++){
             //assigns variable for the icon url
             var iconCode=dailyArray[i].weather[0].icon;
-            var iconurl = "http://openweathermap.org/img/wn/" + iconCode + ".png";
+            var iconurl = "https://openweathermap.org/img/wn/" + iconCode + ".png";
             //fetches icon dynamically
             fetch(iconurl)
             .then(data => {
@@ -148,7 +148,7 @@ $('#Austin').on('click',()=>{
     var city_name = 'Austin';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -178,7 +178,7 @@ $('#Chicago').on('click', ()=>{
     var city_name = 'Chicago';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -298,7 +298,7 @@ $('#Seatle').on('click', ()=>{
     var city_name = 'Seattle';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
@@ -358,7 +358,7 @@ $('#Atlanta').on('click', ()=>{
     var city_name = 'Atlanta';
     
    //
-    weatherURL = 'http://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
+    weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q='+ city_name +'&units=imperial&appid=35d94501369d43748d1a83d5811f76e7';
         
         
     
