@@ -21,6 +21,7 @@
 
 ## Future Improvements
 + add an event listener for 'Enter' keystroke to improve UX
++ create function to convert degrees to cardinal directions for wind.
 + change main stage current date to dayOfWeek, Month Date
 + change forecast date to say today and then only list the days on the week
 + add autocomplete feature to search bar
