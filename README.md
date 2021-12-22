@@ -4,13 +4,13 @@
 
 ## Features
 
-Weather dashboard app which delivers geospecific weather data based on user input and selection.
++ Weather dashboard app which delivers geospecific weather data based on user input and selection.
 
-Utilizes jquery library to dynamically update static html elements.
++ Utilizes jquery library to dynamically update static html elements.
 
-Upon launch user is presented with an input bar, a column of preset cities and a main stage that contains no weather data
++ Upon launch user is presented with an input bar, a column of preset cities and a main stage that contains no weather data
 
-Once user enters or selects a city, current weather data is loaded into the main stage and 5 cards are created below to present a daily forecast
++ Once user enters or selects a city, current weather data is loaded into the main stage and 5 cards are created below to present a daily forecast
 
 
 
@@ -21,6 +21,8 @@ Once user enters or selects a city, current weather data is loaded into the main
 
 ## Future Improvements
 + add an event listener for 'Enter' keystroke to improve UX
++ change main stage current date to dayOfWeek, Month Date
++ change forecast date to say today and then only list the days on the week
 + add autocomplete feature to search bar
 + add weather specific background to the main stage (i.e. snowfall, rainfall, clouds)
 + update color scheme
