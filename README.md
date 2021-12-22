@@ -1,4 +1,4 @@
-## Weather-Dashboard
+# Weather-Dashboard
 
 
 
@@ -28,9 +28,9 @@
 + add weather specific background to the main stage (i.e. snowfall, rainfall, clouds)
 + update color scheme
 
-# Link for Deployment
+## Link for Deployment
 https://kam-mivehchi.github.io/Weather-Dashboard/
 
-# Screen Shots
+## Screen Shots
 ![image](https://user-images.githubusercontent.com/90432404/147157507-20b2312c-d5a4-4db9-94c5-2b72eb62d9b1.png)
 ![image](https://user-images.githubusercontent.com/90432404/147157549-b5fb8afe-9a1b-44cc-bbf7-4e70e159107c.png)
