@@ -9,3 +9,13 @@
 * {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+/* #more-cities {
+    max-height: 15em;
+    overflow-y: scroll;
+} */
+
+
+.recentCity {
+    white-space: nowrap;
+}
