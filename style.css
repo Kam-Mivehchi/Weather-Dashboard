@@ -1,69 +1,11 @@
-:root{
+:root {
     --header-color: #FC4445;
-    --background-color:#CAFAFE ;
-    --button-color:#55BCC9;
-    --current-weather-color:#55BCC9;
+    --background-color: #CAFAFE;
+    --button-color: #55BCC9;
+    --current-weather-color: #55BCC9;
     --card-color: #FC4445;
 }
-*{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-p{
-    font-weight: bold;
-    font-size:120%;
-}
 
-#temps {
-    font-weight: bolder; 
-    font-size:120%; 
-    color:white!important;
-}
-#cardinfo{
-    font-weight: bold;
-    color:black!important;
-}
-#card-title{
-    font-size: 150%;
-}
-
-#background{
-    background-color:var(--background-color);
-}
-#header{
-    background-color: var(--header-color);
-    border-radius: 5px;
-    padding: 1px;
-    text-align: center;
-    border-bottom:10px groove black;
-}
-
-#current{
-    background-color: var(--current-weather-color);
-    margin-top: 10px;
-    border: 2px solid black;
-    border-radius: 20px;
-}
-#fiveDay{
-    margin-top: 10px;
-}
-#fiverCards{
-    background-color: var(--card-color);
-    border-radius: 20px;
-}
-#searchBtn{
-    font-size:130%;
-    background-color: var(--card-color);
-}
-button{
-    background-color: var(--button-color);
-   
-   
-   
-}
-#searchtxt{
-    font-style:bold;
-}
-#presets button {
-    font-size:130%;
-    
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
