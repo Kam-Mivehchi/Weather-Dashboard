@@ -75,7 +75,7 @@ async function fetchCurrentWeather (city) {
     if(!response.ok){
         console.error(jsonData)
     }
-
+    //descructure response
     const { coord, dt: last_updated, main: currentConditions ,name, sys:sun_data, weather, wind}=jsonData
 
     //save the city to local storage
@@ -95,23 +95,44 @@ function init(){
 }
 // getCurrentWeather()
 
-function generateCard(name, weather, currentConditions, sun_data, wind){
-    console.log({ name, weather, currentConditions, sun_data, wind })
-    // currentWeatherCard.innerHTML=""
-    
-    
-    // currentWeatherCard.appendChild(generateHTMLElement("h5", "card-title display-4", name))
-    // currentWeatherCard.appendChild(generateHTMLElement("h1", "card-title display-4 mb-0", `${Math.floor(currentConditions.temp)}°`))
-    // currentWeatherCard.appendChild(generateHTMLElement("p", "lead m-0", `H:${Math.floor(currentConditions.temp_max)} `))
-    // currentWeatherCard.appendChild(generateHTMLElement("p", "lead m-0", `L:${Math.floor(currentConditions.temp_min)} `))
-    
-    // console.log(currentWeatherCard.getElementsByTagName('h5'))
+function generateCard(name, weather, currentConditions, sun_data, wind, last_updated){
+    console.log({ name, weather, currentConditions, sun_data, wind, last_updated })
 
+    const iconUrl =`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
+    console.log(iconUrl)
+    //generate current weather card
+    document.getElementById("currentDay").getElementsByTagName('p')[0].textContent = dayjs().format("dddd")
+    document.getElementById("currentDay").getElementsByTagName('p')[1].textContent = dayjs().format("MMMM D, YYYY")
+    document.getElementById("icon").src =iconUrl;
+    console.dir(currentWeatherCard.getElementsByTagName('img'))
+    document.getElementById("lastUpdate").getElementsByTagName('small')[1].textContent = dayjs.unix(last_updated).format("h:mm a")
     currentWeatherCard.getElementsByTagName('h5')[0].textContent=name
     currentWeatherCard.getElementsByTagName('h1')[0].textContent = `${Math.floor(currentConditions.temp)}°`
+    currentWeatherCard.getElementsByTagName('p')[0].textContent = `${weather[0].description}`
     currentWeatherCard.getElementsByTagName('div')[0].innerHTML=""
     currentWeatherCard.getElementsByTagName('div')[0].appendChild(generateHTMLElement("p", "lead m-0", `H: ${Math.floor(currentConditions.temp_max)}°`))
     currentWeatherCard.getElementsByTagName('div')[0].appendChild(generateHTMLElement("p", "lead m-0", `L: ${Math.floor(currentConditions.temp_min)}°`))
+
+    //generate sunrise + sunset card
+    const sunElements = document.getElementById("sun")
+   sunElements.getElementsByTagName('p')[0].textContent = `Sunrise: ${dayjs.unix(sun_data.sunrise).format("h:mm a")}`
+    sunElements.getElementsByTagName('p')[1].textContent = `Sunset: ${dayjs.unix(sun_data.sunset).format("h:mm a") }`
+
+
+    //generate details card
+    const currentDetails = document.getElementById("currentDetails")
+    currentDetails.getElementsByTagName('p')[0].textContent = `Feels Like: ${Math.floor(currentConditions.feels_like)}°`
+    currentDetails.getElementsByTagName('p')[1].textContent = `Humidity: ${currentConditions.humidity}`
+    currentDetails.getElementsByTagName('p')[2].textContent = `Pressure: ${parseFloat(currentConditions.pressure * 0.02953).toFixed(2)} inHg`
+
+
+    //generate wind card
+    document.getElementById("compass").getElementsByTagName('p')[0].textContent =`${wind.speed}`
+    const root = document.querySelector(':root');
+
+    // set css variable
+    root.style.setProperty('--arrow-direction', `${wind.deg}deg`);
+
 }
 
 //enter classes as a space seperated list
