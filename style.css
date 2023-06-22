@@ -1,6 +1,9 @@
 :root {
     --accent: teal;
     --arrow-direction: 10deg;
+
+    --temp-gradient-hot: rgba(228, 152, 45, 1);
+    --temp-gradient-cold: rgba(148, 187, 233, 1);
 }
 
 * {
@@ -12,7 +15,7 @@
     overflow-y: scroll;
 } */
 
-
+/* fade all elements in */
 .recentCity {
     white-space: nowrap;
 }
@@ -27,6 +30,20 @@
 
 }
 
+.gradient {
+    background: rgb(148, 187, 233);
+    background: linear-gradient(90deg, var(--temp-gradient-cold) 0%, var(--temp-gradient-hot) 100%);
+}
+
+
+
+.cold {
+    color: var(--temp-gradient-cold);
+}
+
+.hot {
+    color: var(--temp-gradient-hot);
+}
 
 .direction {
     background-color: white;
@@ -77,6 +94,7 @@
     z-index: -1;
     transform: rotate(var(--arrow-direction));
     position: relative;
+    transition: all 1s ease-out;
 }
 
 #head {
