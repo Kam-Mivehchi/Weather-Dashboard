@@ -101,8 +101,46 @@ async function fetchCurrentWeather(city) {
     generateCurrentSunCard(sun_data)
     generateCurrentDetailsCard(currentConditions)
 
+    renderBackground(weather[0].id)
 
 }
+function renderBackground(id) {
+
+
+    console.log(id)
+    switch (true) {
+        //Thunderstorm
+        case (id < 300):
+            lighteningEffect()
+            break;
+        // Drizzle
+        case (id < 400):
+            break;
+        //Rain
+        case (id < 600):
+            rainingCanvas()
+            break;
+        //Snow
+        case (id < 700):
+            break;
+        //atmosphere (ie smog/smoke)
+        case (id < 800):
+            console.log("Ir an")
+
+            break;
+        // clear skys
+        case (id === 800):
+
+            break;
+        //Clouds
+        default:
+            break;
+
+    }
+
+
+}
+
 async function fetchForecast(city) {
     const response = await fetch(Utils.generateUrl("forecast", city));
 
@@ -115,14 +153,18 @@ async function fetchForecast(city) {
     //descructure response
     const { list } = jsonData;
 
+    generateForecastCard(list)
 
+}
+//loop through each forecast data set and construct the day cards
+function generateForecastCard(list) {
     let htmlString = ''
     list.forEach((timeblock, idx) => {
         const { dt_txt, weather, main } = timeblock;
 
         // every new day I want to create a new section for that day
         if (dt_txt.split(' ')[1] == "00:00:00" || idx == 0) {
-            htmlString += `<li class="list-group-item d-flex justify-content-between">
+            htmlString += `<li class=" d-flex flex-column align-items-center col-12 col-md-6 col-lg-4 ">
                         <h4>${dayjs(dt_txt).format('ddd')}</h4>
                         <ul class="list-group">
                         `
@@ -217,3 +259,127 @@ function generateRecentCities() {
 
 
 
+// var canvas = $('#canvas')[0];
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+// function rainingCanvas() {
+
+
+//     if (canvas.getContext) {
+//         var ctx = canvas.getContext('2d');
+//         var w = canvas.width;
+//         var h = canvas.height;
+//         ctx.strokeStyle = 'rgba(174,194,224,0.8)';
+//         ctx.lineWidth = 1;
+//         ctx.lineCap = 'round';
+
+
+//         var init = [];
+//         var maxParts = 1000;
+//         for (var a = 0; a < maxParts; a++) {
+//             init.push({
+//                 x: Math.random() * w,
+//                 y: Math.random() * h,
+//                 l: Math.random() * 1,
+//                 xs: -4 + Math.random() * 4 + 2,
+//                 ys: Math.random() * 10 + 10
+//             })
+//         }
+
+//         var particles = [];
+//         for (var b = 0; b < maxParts; b++) {
+//             particles[b] = init[b];
+//         }
+
+//         function draw() {
+//             ctx.clearRect(0, 0, w, h);
+//             for (var c = 0; c < particles.length; c++) {
+//                 var p = particles[c];
+//                 ctx.beginPath();
+//                 ctx.moveTo(p.x, p.y);
+//                 ctx.lineTo(p.x + p.l * p.xs, p.y + p.l * p.ys);
+//                 ctx.stroke();
+//             }
+//             move();
+//         }
+
+//         function move() {
+//             for (var b = 0; b < particles.length; b++) {
+//                 var p = particles[b];
+//                 p.x += p.xs;
+//                 p.y += p.ys;
+//                 if (p.x > w || p.y > h) {
+//                     p.x = Math.random() * w;
+//                     p.y = -20;
+//                 }
+//             }
+//         }
+
+//         setInterval(draw, 30);
+
+//     }
+
+// }
+
+
+
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+// var ctx = canvas.getContext("2d");
+
+// var center = { x: window.innerWidth / 2, y: 20 };
+// var minSegmentHeight = 5;
+// var groundHeight = window.innerWidth - 20;
+// var color = "hsl(180, 80%, 80%)";
+// var roughness = 2;
+// var maxDifference = window.innerWidth / 5;
+
+// ctx.globalCompositeOperation = "lighter";
+
+// ctx.strokeStyle = color;
+// ctx.shadowColor = color;
+
+// ctx.fillStyle = color;
+// ctx.fillRect(0, 0, window.innerWidth, window.innerWidth);
+// ctx.fillStyle = "hsla(0, 0%, 10%, 0.2)";
+
+// function renderLightening() {
+//     ctx.shadowBlur = 0;
+//     ctx.globalCompositeOperation = "source-over";
+//     ctx.fillRect(0, 0, window.innerWidth, window.innerWidth);
+//     ctx.globalCompositeOperation = "lighter";
+//     ctx.shadowBlur = 15;
+//     var lightning = createLightning();
+//     ctx.beginPath();
+//     for (var i = 0; i < lightning.length; i++) {
+//         ctx.lineTo(lightning[i].x, lightning[i].y);
+//     }
+//     ctx.stroke();
+//     requestAnimationFrame(render);
+// }
+
+// function createLightning() {
+//     var segmentHeight = groundHeight - center.y;
+//     var lightning = [];
+//     lightning.push({ x: center.x, y: center.y });
+//     lightning.push({ x: Math.random() * (window.innerWidth - 100) + 50, y: groundHeight + (Math.random() - 0.9) * 50 });
+//     var currDiff = maxDifference;
+//     while (segmentHeight > minSegmentHeight) {
+//         var newSegments = [];
+//         for (var i = 0; i < lightning.length - 1; i++) {
+//             var start = lightning[i];
+//             var end = lightning[i + 1];
+//             var midX = (start.x + end.x) / 2;
+//             var newX = midX + (Math.random() * 2 - 1) * currDiff;
+//             newSegments.push(start, { x: newX, y: (start.y + end.y) / 2 });
+//         }
+
+//         newSegments.push(lightning.pop());
+//         lightning = newSegments;
+
+//         currDiff /= roughness;
+//         segmentHeight /= 2;
+//     }
+//     return lightning;
+// }
+// renderLightening()

@@ -4,10 +4,16 @@
 
     --temp-gradient-hot: rgba(228, 152, 45, 1);
     --temp-gradient-cold: rgba(148, 187, 233, 1);
+    --background-image: "./Assets/rain.jpg";
 }
 
 * {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-image: url("./Assets/rain.jpg");
+    background-size: cover;
 }
 
 /* #more-cities {
@@ -18,6 +24,11 @@
 /* fade all elements in */
 .recentCity {
     white-space: nowrap;
+}
+
+.info_tile {
+    border-radius: 1em !important;
+    overflow: hidden;
 }
 
 #compass {
