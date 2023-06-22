@@ -61,6 +61,7 @@ function handleSearch(e) {
 }
 
 
+
 //creates a url for a specific city and api endpoint
 function generateUrl(endpoint, city_name, units = "imperial") {
     // endpoint =[weather,forecast,air_pollution]
@@ -150,6 +151,7 @@ function init() {
 
     fetchCurrentWeather("Anaheim")
     fetchForecast("Anaheim")
+    generateRecents()
 }
 // getCurrentWeather()
 
@@ -202,4 +204,23 @@ function generateHTMLElement(element, classes, text) {
     return newEl;
 }
 
+function generateRecents() {
+    const recentsElement = document.getElementById("recents")
+
+    recentsElement.innerHTML = ""
+    for (const city in LocalStorageUtil.getItem("recents")) {
+        const wrapper = generateHTMLElement("div", "wrapper", "")
+        console.log(city)
+        const button = generateHTMLElement("button", "recentCity btn btn-sm btn-primary rounded-pill me-1 mb-1", city)
+        button.setAttribute("style", "width: max-content")
+        button.setAttribute("onclick", "width: max-content")
+        button.addEventListener("click", (e) => {
+
+            fetchCurrentWeather(e.target.textContent);
+            fetchForecast(e.target.textContent)
+        })
+        wrapper.appendChild(button);
+        recentsElement.appendChild(wrapper)
+    }
+}
 
