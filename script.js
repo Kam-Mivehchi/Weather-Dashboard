@@ -107,7 +107,7 @@ async function fetchCurrentWeather(city) {
 function renderBackground(id) {
 
 
-    console.log(id)
+
     switch (true) {
         //Thunderstorm
         case (id < 300):
