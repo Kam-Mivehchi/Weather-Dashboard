@@ -191,7 +191,6 @@ function generateForecastCard(list) {
     //add the forecast string to the dom
     document.getElementById("forecast").getElementsByTagName('ul')[0].innerHTML = htmlString
 }
-
 function generateCurrentWeatherCard(name, weather, currentConditions, last_updated) {
 
     const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
@@ -242,7 +241,7 @@ function generateRecentCities() {
     for (const city in Utils.getLocalStorage("recents")) {
         const wrapper = Utils.generateHTMLElement("div", "wrapper", "")
 
-        const button = Utils.generateHTMLElement("button", "recentCity btn btn-sm btn-primary rounded-pill me-1 mb-1", city)
+        const button = Utils.generateHTMLElement("button", "recentCity btn btn-sm btn-primary rounded-pill me-1 mb-1 styled-btn", city)
         button.setAttribute("style", "width: max-content")
         button.setAttribute("onclick", "width: max-content")
         button.addEventListener("click", (e) => {
@@ -256,130 +255,15 @@ function generateRecentCities() {
 }
 
 
+(function footer() {
+
+    document.querySelector('footer').appendChild(Utils.generateHTMLElement("p", "lead m-0", "Kamyar Mivehchi"))
+    document.querySelector('footer').appendChild(Utils.generateHTMLElement("p", "lead m-0", "©"))
+    document.querySelector('footer').appendChild(Utils.generateHTMLElement("span", "lead m-0", dayjs().format("YYYY")))
+
+})()
 
 
 
-// var canvas = $('#canvas')[0];
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// function rainingCanvas() {
 
 
-//     if (canvas.getContext) {
-//         var ctx = canvas.getContext('2d');
-//         var w = canvas.width;
-//         var h = canvas.height;
-//         ctx.strokeStyle = 'rgba(174,194,224,0.8)';
-//         ctx.lineWidth = 1;
-//         ctx.lineCap = 'round';
-
-
-//         var init = [];
-//         var maxParts = 1000;
-//         for (var a = 0; a < maxParts; a++) {
-//             init.push({
-//                 x: Math.random() * w,
-//                 y: Math.random() * h,
-//                 l: Math.random() * 1,
-//                 xs: -4 + Math.random() * 4 + 2,
-//                 ys: Math.random() * 10 + 10
-//             })
-//         }
-
-//         var particles = [];
-//         for (var b = 0; b < maxParts; b++) {
-//             particles[b] = init[b];
-//         }
-
-//         function draw() {
-//             ctx.clearRect(0, 0, w, h);
-//             for (var c = 0; c < particles.length; c++) {
-//                 var p = particles[c];
-//                 ctx.beginPath();
-//                 ctx.moveTo(p.x, p.y);
-//                 ctx.lineTo(p.x + p.l * p.xs, p.y + p.l * p.ys);
-//                 ctx.stroke();
-//             }
-//             move();
-//         }
-
-//         function move() {
-//             for (var b = 0; b < particles.length; b++) {
-//                 var p = particles[b];
-//                 p.x += p.xs;
-//                 p.y += p.ys;
-//                 if (p.x > w || p.y > h) {
-//                     p.x = Math.random() * w;
-//                     p.y = -20;
-//                 }
-//             }
-//         }
-
-//         setInterval(draw, 30);
-
-//     }
-
-// }
-
-
-
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// var ctx = canvas.getContext("2d");
-
-// var center = { x: window.innerWidth / 2, y: 20 };
-// var minSegmentHeight = 5;
-// var groundHeight = window.innerWidth - 20;
-// var color = "hsl(180, 80%, 80%)";
-// var roughness = 2;
-// var maxDifference = window.innerWidth / 5;
-
-// ctx.globalCompositeOperation = "lighter";
-
-// ctx.strokeStyle = color;
-// ctx.shadowColor = color;
-
-// ctx.fillStyle = color;
-// ctx.fillRect(0, 0, window.innerWidth, window.innerWidth);
-// ctx.fillStyle = "hsla(0, 0%, 10%, 0.2)";
-
-// function renderLightening() {
-//     ctx.shadowBlur = 0;
-//     ctx.globalCompositeOperation = "source-over";
-//     ctx.fillRect(0, 0, window.innerWidth, window.innerWidth);
-//     ctx.globalCompositeOperation = "lighter";
-//     ctx.shadowBlur = 15;
-//     var lightning = createLightning();
-//     ctx.beginPath();
-//     for (var i = 0; i < lightning.length; i++) {
-//         ctx.lineTo(lightning[i].x, lightning[i].y);
-//     }
-//     ctx.stroke();
-//     requestAnimationFrame(render);
-// }
-
-// function createLightning() {
-//     var segmentHeight = groundHeight - center.y;
-//     var lightning = [];
-//     lightning.push({ x: center.x, y: center.y });
-//     lightning.push({ x: Math.random() * (window.innerWidth - 100) + 50, y: groundHeight + (Math.random() - 0.9) * 50 });
-//     var currDiff = maxDifference;
-//     while (segmentHeight > minSegmentHeight) {
-//         var newSegments = [];
-//         for (var i = 0; i < lightning.length - 1; i++) {
-//             var start = lightning[i];
-//             var end = lightning[i + 1];
-//             var midX = (start.x + end.x) / 2;
-//             var newX = midX + (Math.random() * 2 - 1) * currDiff;
-//             newSegments.push(start, { x: newX, y: (start.y + end.y) / 2 });
-//         }
-
-//         newSegments.push(lightning.pop());
-//         lightning = newSegments;
-
-//         currDiff /= roughness;
-//         segmentHeight /= 2;
-//     }
-//     return lightning;
-// }
-// renderLightening()

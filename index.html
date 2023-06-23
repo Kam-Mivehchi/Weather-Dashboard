@@ -22,15 +22,15 @@
 
     <header>
         <nav class="navbar">
-            <div class="container-md justify-content-md-between justify-content-center">
+            <div class="container-md justify-content-md-between justify-content-center flex-column flex-md-row">
 
-                <a class="navbar-brand h1" href="#">WeatherBuddy</a>
-                <form class="d-flex input-group p-0" role="search" id="search-form">
+                <a class="navbar-brand h1 logo" href="#">WeatherBuddy</a>
+                <form class="d-flex  p-0 " role="search" id="search-form">
 
                     <input class="form-control  me-2 rounded-pill " type="search" placeholder="Search a City"
                         aria-label="Search" id="search">
 
-                    <button class="btn btn  ms-2 btn-primary  rounded-pill rounded " type="submit"><i
+                    <button class="btn btn  ms-2 btn-primary  rounded-pill rounded styled-btn" type="submit"><i
                             class="fas fa-search" style="color: #f5f5f5;"></i>
                     </button>
 
@@ -46,19 +46,14 @@
         <p class="h5">Recent Cities</p>
         <div class="container-md d-flex flex-wrap justify-content-center" id="recents">
             <!-- If there are more than 12 cities then display this buttun-->
-            <a class="btn btn-light btn-sm rounded-pill " data-bs-toggle="collapse" href="#more-cities" role="button"
+            <!-- <a class="btn btn-light btn-sm rounded-pill " data-bs-toggle="collapse" href="#more-cities" role="button"
                 aria-expanded="false" aria-controls="more-cities">
                 More
                 <i class="fas fa-caret-down"></i>
-            </a>
+            </a> -->
 
         </div>
-        <div class="collapse" id="more-cities">
-            <div class="container-md d-flex flex-wrap justify-content-center">
 
-
-            </div>
-        </div>
 
     </aside>
 
@@ -68,8 +63,8 @@
         <div class="row p-2 gap-1">
 
             <!-- current temps and min/max -->
-            <section class=" card text-center p-0 col-12 col-md-8 mx-auto  col-xl-3 rounded-xxl  info_tile h-100">
-                <div class="card-header ">
+            <section class=" card text-center p-0 col-12 col-md-8 mx-auto  col-xl-3 rounded-xxl  info_tile  card-color">
+                <div class="card-header header-color">
                     <div class="" id="currentDay">
                         <p class="lead m-0">
                             Wednesday
@@ -94,28 +89,49 @@
                     <div class="d-flex justify-content-center gap-2"></div>
                 </div>
 
-                <div class="card-footer text-start " id="lastUpdate">
+                <div class="card-footer text-start header-color" id="lastUpdate">
                     <small class="m-0">Last Updated:</small>
                     <small class="m-0"></small>
                 </div>
             </section>
             <!-- 8 day forecast  -->
             <section id="forecast"
-                class="row  d-flex justify-content-center mx-auto col-12 col-xl-8   card  info_tile p-0">
-                <div class="card-header ">
+                class="row  d-flex justify-content-center mx-auto col-12 col-xl-8   card  info_tile p-0 card-color">
+                <div class="card-header header-color">
                     <p class="lead m-0 p-0">
                         Forecast
                     </p>
                 </div>
 
-                <ul class="list-group-horizontal  forecast d-flex  row"></ul>
+                <ul class="list-group-horizontal  forecast d-flex  row  justify-content-center mx-auto"></ul>
             </section>
         </div>
         <div class="row d-flex justify-content-center gap-2">
 
+            <!-- Addl details section -->
+            <section class="details_data card text-center p-0 col-12  col-md-3 rounded-xxl info_tile card-color"
+                id="details">
+                <div class="card-header header-color">
+                    <div class="">
+                        <p class="lead m-0">
+                            Details
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-0"
+                    id="currentDetails">
+                    <p class="m-0 lead">Feels Like:</p>
+                    <p class="m-0 lead">Humidity:</p>
+                    <p class="m-0 lead">Pressure:</p>
+
+                </div>
+            </section>
+
             <!-- Wind section -->
-            <section class="details_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile">
-                <div class="card-header ">
+            <section class="details_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile card-color"
+                id="wind-card">
+                <div class="card-header header-color">
                     <div class="">
                         <p class="lead m-0">
                             Wind
@@ -123,9 +139,9 @@
                     </div>
                 </div>
 
-                <div
-                    class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-3">
-                    <div id="compass" class="d-flex justify-content-center align-items-center position-relative">
+                <div class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-3 w-100"
+                    style="">
+                    <div id="compass" class="d-flex justify-content-center align-items-center position-relative ">
                         <div id="wind">
                             <p class="m-0">4 </p>
                             <p class="m-0">mph</p>
@@ -142,51 +158,40 @@
                 </div>
             </section>
             <!-- Sunrise and Sunset Card -->
-            <section class="sun_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile">
-                <div class="card-header ">
+            <section class="sun_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile card-color"
+                id="sunset">
+                <div class="card-header header-color">
                     <div class="">
                         <p class="lead m-0">
                             Sunset/Sunrise
                         </p>
+
                     </div>
                 </div>
 
-                <div class="card-body d-flex justify-content-center text-center flex-column col-8 col-md-8  mx-auto p-0 "
+                <div class="card-body d-flex justify-content-center text-center flex-column col-8 col-md-8  mx-auto p-3 "
                     id="sun">
-                    <p class="m-0">Sunset:</p>
-                    <p class="m-0">Sunrise:</p>
+                    <img width="30" height="30" src="https://img.icons8.com/cotton/64/sunrise--v1.png" class="mx-auto"
+                        alt="sunrise--v1" />
+                    <p class="m-0 lead">Sunset:</p>
+                    <img width="30" height="30" src="https://img.icons8.com/cotton/64/sunset--v4.png" class="mx-auto"
+                        alt="sunrise--v1" />
+                    <p class="m-0 lead">Sunrise:</p>
                 </div>
             </section>
 
-            <!-- Addl details section -->
-            <section class="details_data card text-center p-0 col-12  col-md-3 rounded-xxl info_tile ">
-                <div class="card-header ">
-                    <div class="">
-                        <p class="lead m-0">
-                            Details
-                        </p>
-                    </div>
-                </div>
 
-                <div class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-0"
-                    id="currentDetails">
-                    <p class="m-0">Feels Like:</p>
-                    <p class="m-0">Humidity:</p>
-                    <p class="m-0">Pressure:</p>
-
-                </div>
-            </section>
 
 
         </div>
     </main>
-    <footer></footer>
+    <footer class="d-flex justify-content-center gap-2"></footer>
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src=" ./script.js">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
