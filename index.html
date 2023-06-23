@@ -1,72 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='./reset.css' rel="stylesheet">
     <link href='./style.css' rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link type="image/png" sizes="16x16" rel="icon" href="../Assets/icon.png">
+
     <title>Weather Dashboard</title>
 </head>
-<body id ="background">
-    <header class= 'jumbotron jumbotron-fluid' id='header'>
-        <div class= 'container' >
-            <h1 class ='display-3 text-center mb-4' >Weather Dashboard</h1>
-        </header>
-    <main >
-        <div class="row">
+<!-- header will have the search form -->
 
-            <div class='col-3 mx-4' id='left-column'>
-                <div class ='row border-bottom pb-2'id = 'search'>
-                    <h1 class ='display-6' id='searchtxt'>Search for a City:</h1>
-                    
-                    <input class ='rounded border-1'type = 'text' id ="userInput" placeholder="Anaheim"/>
-                    <br>
-                    <button class = 'my-1 mt-2 rounded' id ="searchBtn" type ="button">Search</button>
-                </div>
-                <div class ='row py-2' id ='presets'>
-                    <button class = 'my-1 rounded'type="button" id='Austin'>Austin</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='Chicago'>Chicago</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='New'>New York</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='Orlando'>Orlando</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='San'>San Francisco</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='Seatle'>Seattle</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='Denver'>Denver</button>
-                    <br>
-                    <button class = 'my-1 rounded'type="button" id='Atlanta'>Atlanta</button>
-                    <br>
-                </div>
-            </div>
-            
-            
-            <div class ="col-8  " id= 'stage'>
-                <div class = ''id ='current'>
-                    <h1 class='mx-2 display-6'id='City'>Enter a City</h1>
-                    <img class='mx-3' id ='icon' src='' alt=''>
-                    <p class='mx-3'id='temp'>Current Temperature:</p>
-                    <p class='mx-3'id ='wind'>Wind:</p>
-                    <p class='mx-3'id ='humidity'>Humidity:</p>
-                    <p class='mx-3'id='uv'>UV Index:</p>
-                    <p class='mx-3'id ='sunrise'>Sunrise:</p>
-                    <p class='mx-3'id='sunset'>Sunset:</p>
+<body id="background">
+    <!-- search bar and brand name -->
 
-                </div>
-                <div class= 'container'id ='fiveDay'></div>
+
+    <header>
+        <nav class="navbar fade-in">
+            <div class="container-md justify-content-md-between justify-content-center flex-column flex-md-row">
+
+                <a class="navbar-brand h1 logo" href="#">WeatherBuddy</a>
+                <form class="d-flex  p-0 " role="search" id="search-form">
+
+                    <input class="form-control  me-2 rounded-pill " type="search" placeholder="Search a City"
+                        aria-label="Search" id="search">
+
+                    <button class="btn btn  ms-2 btn-primary  rounded-pill rounded styled-btn" type="submit"><i
+                            class="fas fa-search" style="color: #f5f5f5;"></i>
+                    </button>
+
             </div>
-            
+            </form>
+            </div>
+        </nav>
+    </header>
+    <!-- Recent Cities -->
+    <!-- If no recents then add a hidden class to this whole aside -->
+    <aside class=" container-md d-flex flex-column align-items-center ">
+
+        <p class="h5">Recent Cities</p>
+        <div class="container-md d-flex flex-wrap justify-content-center fade-in" id="recents">
+            <!-- If there are more than 12 cities then display this buttun-->
+            <!-- <a class="btn btn-light btn-sm rounded-pill " data-bs-toggle="collapse" href="#more-cities" role="button"
+                aria-expanded="false" aria-controls="more-cities">
+                More
+                <i class="fas fa-caret-down"></i>
+            </a> -->
+
         </div>
-        
+
+
+    </aside>
+
+    <main class="container-md ">
+
+        <!-- dynamically render these cards -->
+        <div class="row p-2 gap-1">
+
+            <!-- current temps and min/max -->
+            <section class=" card text-center p-0 col-12 col-md-8 mx-auto  col-xl-3 rounded-xxl  info_tile  card-color">
+                <div class="card-header header-color">
+                    <div class="" id="currentDay">
+                        <p class="lead m-0">
+                            Wednesday
+                        </p>
+                        <p class="lead m-0">
+                            September 31, 2023
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-body d-flex justify-content-center align-items-center text-center row col-8 col-md-8  mx-auto fade-in"
+                    id="currentWeather">
+                    <!-- city name -->
+                    <h5 class="card-title display-6"></h5>
+                    <!-- icon for conditions -->
+                    <img src="" alt="" id="icon" />
+                    <!-- current temp -->
+                    <h1 class="card-title display-4 mb-0"></h1>
+                    <!-- description -->
+                    <p class="lead m-0"></p>
+                    <!-- highs and lows -->
+                    <div class="d-flex justify-content-center gap-2"></div>
+                </div>
+
+                <div class="card-footer text-start header-color" id="lastUpdate">
+                    <small class="m-0">Last Updated:</small>
+                    <small class="m-0"></small>
+                </div>
+            </section>
+            <!-- 8 day forecast  -->
+            <section id="forecast"
+                class="row  d-flex justify-content-center mx-auto col-12 col-xl-8   card  info_tile p-0 card-color">
+                <div class="card-header header-color">
+                    <p class="lead m-0 p-0">
+                        Forecast
+                    </p>
+                </div>
+
+                <ul class="list-group-horizontal  forecast d-flex  row  justify-content-center mx-auto fade-in"></ul>
+            </section>
+        </div>
+        <div class="row d-flex justify-content-center gap-2">
+
+            <!-- Addl details section -->
+            <section class="details_data card text-center p-0 col-12  col-md-3 rounded-xxl info_tile card-color"
+                id="details">
+                <div class="card-header header-color">
+                    <div class="">
+                        <p class="lead m-0">
+                            Details
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-0 fade-in"
+                    id="currentDetails">
+                    <p class="m-0 lead">Feels Like:</p>
+                    <p class="m-0 lead">Humidity:</p>
+                    <p class="m-0 lead">Pressure:</p>
+
+                </div>
+            </section>
+
+            <!-- Wind section -->
+            <section class="details_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile card-color"
+                id="wind-card">
+                <div class="card-header header-color">
+                    <div class="">
+                        <p class="lead m-0">
+                            Wind
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="card-body d-flex justify-content-center align-items-center  row col-8 col-md-8  mx-auto p-3 fade-in w-100">
+                    <div id="compass" class="d-flex justify-content-center align-items-center position-relative ">
+                        <div id="wind">
+                            <p class="m-0">4 </p>
+                            <p class="m-0">mph</p>
+                        </div>
+                        <span class="position-absolute" id="arrow">
+                            <span id="head"></span>
+                            <span id="tail"></span>
+                        </span>
+                        <span class="direction position-absolute" id="N">N</span>
+                        <span class="direction position-absolute" id="W">W</span>
+                        <span class="direction position-absolute" id="E">E</span>
+                        <span class="direction position-absolute" id="S">S</span>
+                    </div>
+                </div>
+            </section>
+            <!-- Sunrise and Sunset Card -->
+            <section class="sun_data card text-center p-0 col-12  col-md-4 rounded-xxl info_tile card-color"
+                id="sunset">
+                <div class="card-header header-color">
+                    <div class="">
+                        <p class="lead m-0">
+                            Sunset/Sunrise
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="card-body d-flex justify-content-center text-center flex-column col-8 col-md-8  mx-auto p-3 fade-in"
+                    id="sun">
+                    <img width="30" height="30" src="https://img.icons8.com/cotton/64/sunrise--v1.png" class="mx-auto"
+                        alt="sunrise--v1" />
+                    <p class="m-0 lead ">Sunset:</p>
+                    <img width="30" height="30" src="https://img.icons8.com/cotton/64/sunset--v4.png" class="mx-auto"
+                        alt="sunrise--v1" />
+                    <p class="m-0 lead">Sunrise:</p>
+                </div>
+            </section>
+
+
+
+
+        </div>
     </main>
+    <footer class="d-flex justify-content-center gap-2"></footer>
 
 
 
-    <script src= "./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src=" ./script.js">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
 </body>
+</body>
+
 </html>

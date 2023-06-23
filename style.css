@@ -1,69 +1,221 @@
-:root{
-    --header-color: #FC4445;
-    --background-color:#CAFAFE ;
-    --button-color:#55BCC9;
-    --current-weather-color:#55BCC9;
-    --card-color: #FC4445;
-}
-*{
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-p{
-    font-weight: bold;
-    font-size:120%;
+:root {
+
+    --arrow-direction: 10deg;
+
+    --temp-gradient-hot: rgba(228, 152, 45, 1);
+    --temp-gradient-cold: rgba(148, 187, 233, 1);
+
+    --background-color: #D8C4B6;
+    --card-body-color: #F5EFE7;
+    --card-header-color: #213555;
+    --accent-color: #4F709C;
 }
 
-#temps {
-    font-weight: bolder; 
-    font-size:120%; 
-    color:white!important;
-}
-#cardinfo{
-    font-weight: bold;
-    color:black!important;
-}
-#card-title{
-    font-size: 150%;
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-#background{
-    background-color:var(--background-color);
-}
-#header{
-    background-color: var(--header-color);
-    border-radius: 5px;
-    padding: 1px;
-    text-align: center;
-    border-bottom:10px groove black;
+footer {
+    margin-top: 1em;
+    padding: 1em 0;
+    background-color: var(--card-body-color);
+    /* color: white; */
 }
 
-#current{
-    background-color: var(--current-weather-color);
-    margin-top: 10px;
-    border: 2px solid black;
-    border-radius: 20px;
+.fade-in {
+    animation: fadeIn 2s;
 }
-#fiveDay{
-    margin-top: 10px;
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
-#fiverCards{
-    background-color: var(--card-color);
-    border-radius: 20px;
+
+#background {
+    background-color: var(--background-color);
 }
-#searchBtn{
-    font-size:130%;
-    background-color: var(--card-color);
+
+.header-color {
+    background-color: var(--card-header-color) !important;
+    color: var(--card-body-color);
 }
-button{
-    background-color: var(--button-color);
-   
-   
-   
+
+.card-color {
+    background-color: var(--card-body-color) !important;
+
 }
-#searchtxt{
-    font-style:bold;
+
+#sunset {
+    background-image: url('../Assets/sunset.png');
+    background-size: cover;
+
+    background-position-x: center;
+    background-position-y: center;
+    /* background-position-y: 50%; */
 }
-#presets button {
-    font-size:130%;
-    
+
+#wind-card {
+    background-image: url('../Assets/wind.png');
+    background-size: cover;
+}
+
+#details {
+    background-image: url('../Assets/details.jpg');
+    background-size: cover;
+}
+
+#currentDetails {
+    backdrop-filter: blur(3px);
+
+    /* width: 100%; */
+}
+
+/* fade all elements in */
+
+.recentCity {
+    white-space: nowrap;
+
+}
+
+.logo {
+    font-size: 2em !important;
+    background: -webkit-linear-gradient(var(--card-header-color), var(--accent-color), var(--card-header-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.styled-btn {
+    background-color: var(--accent-color) !important;
+    border-color: var(--card-header-color) !important;
+}
+
+.styled-btn:hover {
+    opacity: .7;
+    transform: scale(1.05)
+}
+
+.styled-btn:active {
+    opacity: 1;
+    transform: scale(.95)
+}
+
+
+.info_tile {
+    border-radius: 1em !important;
+    overflow: hidden;
+}
+
+
+.gradient {
+    background: rgb(148, 187, 233);
+    background: linear-gradient(90deg, var(--temp-gradient-cold) 0%, var(--temp-gradient-hot) 100%);
+}
+
+
+
+.cold {
+    color: var(--temp-gradient-cold);
+}
+
+.hot {
+    color: var(--temp-gradient-hot);
+}
+
+
+
+#compass {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='black' stroke-width='7' stroke-dasharray='2' stroke-dashoffset='86' stroke-linecap='butt'/%3e%3c/svg%3e");
+
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    z-index: 1;
+    background-position-x: center;
+    backdrop-filter: blur(10px);
+    padding: 1em
+}
+
+.direction {
+
+    color: var(--card-header-color);
+    padding: 1px 4px;
+    /* backdrop-filter: invert(80%); */
+}
+
+#N {
+    top: 0;
+
+
+}
+
+#S {
+    bottom: 0;
+
+
+}
+
+#E,
+#W {
+    top: 50%;
+}
+
+#W {
+    left: 0;
+    transform: translate(2px, -50%);
+}
+
+#E {
+    right: 0;
+    transform: translate(-2px, -50%);
+}
+
+#wind {
+    background-color: var(--card-header-color);
+    color: white;
+    padding: .5em;
+    width: 4em;
+    height: 4em;
+    height: auto;
+    border-radius: 50%;
+}
+
+#arrow {
+    background-color: var(--card-header-color);
+    width: .2em;
+    height: 75%;
+    z-index: -1;
+    transform: rotate(var(--arrow-direction));
+    position: relative;
+    transition: all 1s ease-out;
+}
+
+#head {
+    width: 0;
+    height: 0;
+    border-left: .4em solid transparent;
+    border-right: .4em solid transparent;
+
+    border-bottom: .4em solid var(--card-header-color);
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+}
+
+#tail {
+    width: .5em;
+    height: .5em;
+    background-color: var(--card-header-color);
+    /* border: .1em solid var(--background-color); */
+    border-radius: 50%;
+    bottom: .25em;
+    position: absolute;
+    transform: translate(-50%, 50%);
+
 }
