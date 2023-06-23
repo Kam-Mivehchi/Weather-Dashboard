@@ -72,7 +72,8 @@ footer {
     font-size: 2em !important;
     background: -webkit-linear-gradient(var(--card-header-color), var(--accent-color), var(--card-header-color));
     -webkit-background-clip: text;
-    -background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
