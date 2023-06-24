@@ -19,15 +19,6 @@
 + Select from a preset list of 8 cities or enter your own city into the input module
 + Select start and watch the html dynamically update with your desired city
 
-## Future Improvements
-+ add an event listener for 'Enter' keystroke to improve UX
-+ create function to convert degrees to cardinal directions for wind.
-+ improve time function to acount for different time zones.
-+ change main stage current date to dayOfWeek, Month Date
-+ change forecast date to say today and then only list the days on the week
-+ add autocomplete feature to search bar
-+ add weather specific background to the main stage (i.e. snowfall, rainfall, clouds)
-+ update color scheme
 
 ## Link for Deployment
 https://kam-mivehchi.github.io/Weather-Dashboard/
