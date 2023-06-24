@@ -51,7 +51,7 @@ footer {
 }
 
 #sunset {
-    background-image: url('../Assets/sunset.png');
+    background-image: url('../images/sunset.png');
     background-size: cover;
 
     background-position-x: center;
@@ -60,22 +60,21 @@ footer {
 }
 
 #wind-card {
-    background-image: url('../Assets/wind.png');
+    background-image: url('../images/wind.png');
     background-size: cover;
 }
 
 #details {
-    background-image: url('../Assets/details.jpg');
+    background-image: url('../images/details.jpg');
     background-size: cover;
 }
 
 #currentDetails {
     backdrop-filter: blur(3px);
 
-    /* width: 100%; */
 }
 
-/* fade all elements in */
+
 
 .recentCity {
     white-space: nowrap;
